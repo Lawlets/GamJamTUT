@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class EnemyHelicopterMove : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_bulletSpawnerPos;
@@ -10,18 +10,12 @@ public class Enemy : MonoBehaviour {
     private float m_shootingSpeed;
 
     [SerializeField]
-    private GameObject m_Trigger;
-    [SerializeField]
-    private int HP = 5;
-
-    //止まる位置(パターン6のみで使用)
-    private Vector2 stopPos;
+    private int HP = 7;
     //移動方法(movement pattern)
     [SerializeField]
     private int movePattern;
     //移動速度(moving Speed)
-    [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed = 0.05f;
     //弾の種類(Types of bullets)
     private int bulletPattern = 1;
     //弾(bullet)
@@ -54,49 +48,42 @@ public class Enemy : MonoBehaviour {
 
     private float iceSlow = 1.0f;
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         pos = transform.position;
         startPos = pos;
         player = GameObject.Find("player_WithHealth").GetComponent<Player>();
         targetPos = player.transform.position;
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         centerPos = camera.ViewportToWorldPoint(new Vector2(0.5f, 0.8f));
-        underPos = camera.ViewportToWorldPoint(new Vector2(0.0f,0.0f));
-        stopPos = m_Trigger.transform.position;
+        underPos = camera.ViewportToWorldPoint(new Vector2(0.0f, 0.0f));
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         EnemyMove(movePattern);
         //transform.position = pos;
-        if(shootFlag == true)
+        if (shootFlag == true)
         {
             shootTime += 1 * Time.deltaTime;
         }
-        if(shootTime > shootDelay)
+        if (shootTime > shootDelay)
         {
             EnemyShot(bulletPattern);
             shootTime = 0;
         }
-        //if(Input.anyKeyDown == true)
+        //if (Input.GetKey("z"))
         //{
-        //    var c = Input.inputString;
-        //    movePattern = int.Parse(c);
-        //    pos = startPos;
-        //    targetPos = player.transform.position;
+        //    iceSlow += 0.25f;
         //}
 
-        if (Input.GetKey("z"))
-        {
-            iceSlow += 0.25f;
-        }
-
-        if (iceSlow >= 1)
-        {
-            iceSlow -= 0.1f;
-        }
-        else iceSlow = 1.0f;
-	}
+        //if (iceSlow >= 1)
+        //{
+        //    iceSlow -= 0.1f;
+        //}
+        //else iceSlow = 1.0f;
+    }
 
     public void EnemyMove(int movePattern)
     {
@@ -108,57 +95,15 @@ public class Enemy : MonoBehaviour {
                 transform.position = pos;
                 break;
             case 2:
-                //直角に曲がる
-                // pos.x -= moveSpeed;
-                float moveX = 0.0f;
-                float moveY = 0.0f;
-                if(pos.x - centerPos.x > 0.2)
-                {
-                    moveX = (centerPos.x - startPos.x) / moveTime;
-                    moveY = (centerPos.y - startPos.y) / moveTime;
-                }
-                else
-                {
-                    moveX = (underPos.x - centerPos.x) / (moveTime + 40);
-                    moveY = (underPos.y - centerPos.y) / (moveTime + 40);
-                }
-
-
-                pos.x += (moveX / iceSlow) * Time.deltaTime;
-                pos.y += (moveY / iceSlow) * Time.deltaTime;
-                transform.position = pos;
-                break;
-            case 3:
-                //縦に揺れる
-                fluffy += 0.015f / iceSlow;
-                pos.y = (startPos.y + Mathf.Sin(Mathf.PI * 2 * fluffy) * 1.5f);
-                transform.position = pos;
-                break;
-            case 4:
                 //プレイヤーのy座標に合わせる
                 pos.y += ((player.transform.position.y - pos.y) / 20) / iceSlow;
                 transform.position = pos;
                 break;
-            case 5:
+            case 3:
                 //プレイヤーに突進
                 pos.x += ((targetPos.x - startPos.x) / moveTime) / iceSlow;
                 pos.y += ((targetPos.y - startPos.y) / moveTime) / iceSlow;
                 bulletPattern = 5;
-                transform.position = pos;
-                break;
-            case 6:
-                //一定位置で止まる
-                int stopTime = 60;
-                    pos.x += ((stopPos.x - pos.x) / stopTime) / iceSlow;
-                    pos.y += ((stopPos.y - pos.y) / stopTime) / iceSlow;
-                stopCount++;
-                if (stopCount < stopTime)
-                {
-                    shootFlag = false;
-                }
-                else shootFlag = true;
-
-                bulletPattern = 4;
                 transform.position = pos;
                 break;
             default:
@@ -170,6 +115,7 @@ public class Enemy : MonoBehaviour {
 
     public void EnemyShot(int bulletPattern)
     {
+
         Vector3 entityPos = transform.position;
         Vector3 bulletSpawnerPos = m_bulletSpawnerPos.transform.position;
 
@@ -181,10 +127,10 @@ public class Enemy : MonoBehaviour {
         {
             case 1:
                 //通常ショット
-               var bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
-                //Destroy(bulletInstance, 5f);
+                var bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
                 rb = bulletInstance.GetComponent<Rigidbody2D>();
                 rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
+                //Destroy(bulletInstance, 5f);
                 break;
             case 2:
                 //3wayショット
@@ -192,9 +138,9 @@ public class Enemy : MonoBehaviour {
                 {
                     bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 30 * i);
-                    //Destroy(bulletInstance, 5f);
                     rb = bulletInstance.GetComponent<Rigidbody2D>();
                     rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
+                    //Destroy(bulletInstance, 5f);
                 }
                 break;
             case 3:
@@ -203,19 +149,19 @@ public class Enemy : MonoBehaviour {
                 {
                     bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 20 * i);
-                    //Destroy(bulletInstance, 5f);
                     rb = bulletInstance.GetComponent<Rigidbody2D>();
                     rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
+                    //Destroy(bulletInstance, 5f);
                 }
                 break;
             case 4:
                 //自機狙い
-                    bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
-                    EnemyBulletMove bulletObject = bulletInstance.GetComponent<EnemyBulletMove>();
-                    bulletObject.pattern = 2;
-                    //Destroy(bulletInstance, 5f);
-                    rb = bulletInstance.GetComponent<Rigidbody2D>();
-                    rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
+                bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
+                EnemyBulletMove bulletObject = bulletInstance.GetComponent<EnemyBulletMove>();
+                bulletObject.pattern = 2;
+                rb = bulletInstance.GetComponent<Rigidbody2D>();
+                rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
+                //Destroy(bulletInstance, 5f);
                 break;
             default:
                 //
