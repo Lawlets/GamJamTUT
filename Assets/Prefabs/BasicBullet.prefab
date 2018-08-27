@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50335993437746724}
   - component: {fileID: 114335444722216442}
   - component: {fileID: 114829274090762744}
+  - component: {fileID: 95476897705440306}
   m_Layer: 0
   m_Name: BasicBullet
   m_TagString: Bullet
@@ -79,6 +80,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.10000002
+--- !u!95 &95476897705440306
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388662959147760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 127a713bc8c9d4045af1d4a10c6a5d61, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114335444722216442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -90,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4922f7ff62dc4e4bbec487111f7f654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletLifeTime: 1
+  m_bulletLifeTime: 2
   m_damage: 10
 --- !u!114 &114829274090762744
 MonoBehaviour:
@@ -139,8 +158,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.052602768, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 568ffe8f50b35394aa1e7ec4dcf04d89, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
