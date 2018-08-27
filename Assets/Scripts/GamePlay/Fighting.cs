@@ -170,5 +170,19 @@ public class Fighting : MonoBehaviour {
 
     #endregion
 
+    #region FreezeBullet
+
+    public void EnableFreezing()
+    {
+        m_iceBullet.SetActive(true);
+    }
+
+    public void DisableFreezing()
+    {
+        m_iceBullet.SetActive(false);
+    }
+
+    #endregion
+
 }
 

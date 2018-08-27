@@ -46,12 +46,12 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetButtonDown("ButtonA") || Input.GetButton("ButtonA"))
             m_fighting.WaterShot();
-        if (Input.GetButtonDown("ButtonB"))
-            Shot();
         if (Input.GetButtonDown("ButtonY"))
             m_fighting.LightningShot();
         if (Input.GetButtonDown("ButtonX"))
-            Shot();
+            m_fighting.EnableFreezing();
+        if (Input.GetButtonUp("ButtonX"))
+            m_fighting.DisableFreezing();
     }
 
     private void Shot()

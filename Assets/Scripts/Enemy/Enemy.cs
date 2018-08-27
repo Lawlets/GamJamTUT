@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         EnemyMove(movePattern);
-        transform.position = pos;
+        //transform.position = pos;
         shootTime += 1 * Time.deltaTime;
         if(shootTime > shootDelay)
         {
@@ -64,16 +64,19 @@ public class Enemy : MonoBehaviour {
             case 1:
                 //横に移動
                 pos.x -= moveSpeed * Time.deltaTime;
+                transform.position = pos;
                 break;
             case 2:
                 //揺れながら移動
                 pos.x -= moveSpeed * Time.deltaTime;
                 fluffy += 0.015f;
                 pos.y = startPos.y + Mathf.Sin(Mathf.PI * 2 * fluffy) * 1.5f;
+                transform.position = pos;
                 break;
             case 3:
                 //一定位置で止まる
                 pos.x += ((stopPos.x - pos.x) / 30) * Time.deltaTime;
+                transform.position = pos;
                 break;
             default:
                 //
