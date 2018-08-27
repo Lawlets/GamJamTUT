@@ -6,8 +6,8 @@ public class Player : MonoBehaviour {
 
     private CharacterController m_controller;
     private SpriteRenderer m_spriteRenderer;
+    private BoxCollider2D m_collider;
 
-    private float m_life;
     [SerializeField]
     private float m_verticalSpeed = 2f;
     [SerializeField]
@@ -15,7 +15,6 @@ public class Player : MonoBehaviour {
 
 
     void Start () {
-        Debug.Log( Input.GetJoystickNames());
     }
 	
 	void Update () {
