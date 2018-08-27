@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_bulletSpawnerPos;
+    [SerializeField]
+    private float m_shootingSpeed;
 
     //移動方法(movement pattern)
     public int movePattern;
@@ -96,7 +98,7 @@ public class Enemy : MonoBehaviour {
                var bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
                 bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                 rb = bulletInstance.GetComponent<Rigidbody2D>();
-                rb.AddForce(shotDirection.normalized, ForceMode2D.Impulse);
+                rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 break;
             case 2:
                 //3wayショット
@@ -106,7 +108,7 @@ public class Enemy : MonoBehaviour {
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 30 * i);
                     bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                     rb = bulletInstance.GetComponent<Rigidbody2D>();
-                    rb.AddForce(shotDirection.normalized, ForceMode2D.Impulse);
+                    rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 }
                 break;
             case 3:
@@ -117,7 +119,7 @@ public class Enemy : MonoBehaviour {
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 20 * i);
                     bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                     rb = bulletInstance.GetComponent<Rigidbody2D>();
-                    rb.AddForce(shotDirection.normalized, ForceMode2D.Impulse);
+                    rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 }
                 break;
             default:

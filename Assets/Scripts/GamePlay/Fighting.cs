@@ -9,6 +9,9 @@ public class Fighting : MonoBehaviour {
     private GameObject m_bulletSpawner;
 
     [SerializeField]
+    private float m_bulletForce = 0.55f;
+
+    [SerializeField]
     private GameObject m_waterBullet;
     [SerializeField]
     private GameObject m_lightingBullet;
@@ -68,7 +71,7 @@ public class Fighting : MonoBehaviour {
 
 
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-        rb.AddForce(shotDirection.normalized, ForceMode2D.Impulse);
+        rb.AddForce(shotDirection.normalized * m_bulletForce, ForceMode2D.Impulse);
 
         return obj;
     }

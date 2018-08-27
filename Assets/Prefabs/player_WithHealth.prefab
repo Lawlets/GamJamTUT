@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1193272862837758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.863, y: -0.095, z: 0}
-  m_LocalScale: {x: 0.14413485, y: 0.14413485, z: 0.14413485}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4978102270734898}
   m_Father: {fileID: 0}
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df17560d62fbc24aa12f44bcdfee4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_verticalSpeed: 5
-  m_horizontalSpeed: 5
+  m_verticalSpeed: 2.5
+  m_horizontalSpeed: 2.5
 --- !u!114 &114912788179984026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +160,7 @@ MonoBehaviour:
     type: 2}
   m_lightingBullet: {fileID: 0}
   m_iceBullet: {fileID: 0}
-  m_shotCountdown: 0.3
+  m_shotCountdown: 0.1
 --- !u!212 &212066289938915310
 SpriteRenderer:
   m_ObjectHideFlags: 1
