@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114733576972374284}
   - component: {fileID: 50773103588088904}
   - component: {fileID: 114912788179984026}
+  - component: {fileID: 95766191160134658}
   m_Layer: 8
   m_Name: player_WithHealth
   m_TagString: Player
@@ -189,6 +190,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_damage: 0
   m_freezePower: 10
+--- !u!95 &95766191160134658
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193272862837758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86dfbe9c9bf6bd1469e8ca09c890f4eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114733576972374284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,8 +250,8 @@ MonoBehaviour:
     type: 2}
   m_lightingBullet: {fileID: 1947731252406272, guid: e3d34f9e21b4db74a99c8ddb5b200aa6,
     type: 2}
-  m_iceBullet: {fileID: 1141156475201224}
-  m_shotWaterCountdown: 1
+  m_iceBullet: {fileID: 0}
+  m_shotWaterCountdown: 0.1
   m_shotLightningCountdown: 2
 --- !u!212 &212066289938915310
 SpriteRenderer:
