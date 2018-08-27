@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    private CharacterController m_controller;
     private SpriteRenderer m_spriteRenderer;
     private BoxCollider2D m_collider;
+    private Damageable m_damageable;
 
     [SerializeField]
     private float m_verticalSpeed = 2f;
@@ -15,6 +15,11 @@ public class Player : MonoBehaviour {
 
 
     void Start () {
+        m_damageable = GetComponent<Damageable>();
+        m_collider = GetComponent<BoxCollider2D>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 	
 	void Update () {
