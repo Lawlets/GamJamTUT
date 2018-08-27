@@ -13,6 +13,7 @@ public class Lightning : MonoBehaviour {
     private float m_lightningTimer = 0f;
 
     private string m_owner = "";
+    private Player m_player = null;
 
     private BoxCollider2D m_collider;
     private SpriteRenderer m_spriteRenderer;
@@ -31,13 +32,16 @@ public class Lightning : MonoBehaviour {
         if (m_isCoroutineIsOver)
         {
             StopAllCoroutines();
+            m_player.m_hasLightning = false;
             Destroy(gameObject);
         }
 	}
 
-    public void SetOwner(string tag)
+    public void SetOwner(string tag, Player player)
     {
         m_owner = tag;
+        m_player = player;
+        player.m_hasLightning = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

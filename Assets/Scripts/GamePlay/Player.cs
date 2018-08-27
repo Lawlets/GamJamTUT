@@ -9,11 +9,18 @@ public class Player : MonoBehaviour {
     private Damageable m_damageable;
     private Fighting m_fighting;
     private Rigidbody2D m_rigidBody;
+    private Animator m_animator;
+    public bool m_hasLightning = false;
 
     [SerializeField]
     private float m_verticalSpeed = 2f;
     [SerializeField]
     private float m_horizontalSpeed = 2f;
+
+    private bool m_isIdle = false;
+    private bool m_isShooting = false;
+    private bool m_isLightningShooting = false;
+    private bool m_isDead = false;
 
 
     void Start () {
@@ -23,13 +30,21 @@ public class Player : MonoBehaviour {
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_fighting = GetComponent<Fighting>();
         m_rigidBody = GetComponent<Rigidbody2D>();
-
+        m_animator = GetComponent<Animator>();
     }
 	
 	void Update () {
         UpdateMovement();
         UpdateButtonInput();
 	}
+
+    private void FixedUpdate()
+    {
+        m_animator.SetBool("is_Idle", m_isIdle);
+        m_animator.SetBool("is_Shooting", m_isShooting);
+        m_animator.SetBool("is_LightningShooting",  m_isLightningShooting);
+        m_animator.SetBool("is_Death", m_isDead);
+    }
 
     private void UpdateMovement()
     {
@@ -42,21 +57,56 @@ public class Player : MonoBehaviour {
         m_rigidBody.MovePosition(bas_move);
     }
 
+    private void EnableShootingAnimation()
+    {
+        m_isShooting = true;
+        m_isLightningShooting = false;
+        m_isIdle = false;
+    }
+    private void EnableLightningShootingAnimation()
+    {
+        m_isShooting = false;
+        m_isLightningShooting = true;
+        m_isIdle = false;
+    }
+
+    private void EnableIdleAnimation()
+    {
+        m_isShooting = false;
+        m_isLightningShooting = false;
+        m_isIdle = true;
+    }
+
     private void UpdateButtonInput()
     {
-        if (Input.GetButtonDown("ButtonA") || Input.GetButton("ButtonA"))
+        if (Input.GetButton("ButtonA"))
+        {
             m_fighting.WaterShot();
-        if (Input.GetButtonDown("ButtonY"))
-            m_fighting.LightningShot();
-        if (Input.GetButtonDown("ButtonX"))
+            EnableShootingAnimation();
+        }
+        else if (Input.GetButtonDown("ButtonY"))
+        {
+            bool canAnimate = m_fighting.LightningShot();
+            if(canAnimate)
+                EnableLightningShootingAnimation();
+        }
+        else if (Input.GetButton("ButtonX"))
+        {
             m_fighting.EnableFreezing();
-        if (Input.GetButtonUp("ButtonX"))
+            EnableShootingAnimation();
+        }
+        else if (Input.GetButtonUp("ButtonX"))
+        {
             m_fighting.DisableFreezing();
-    }
+            EnableIdleAnimation();
+        }
+        else
+        {
+            if (m_hasLightning)
+                return;
+            else
+                EnableIdleAnimation();
 
-    private void Shot()
-    {
-        
+        }
     }
-
 }

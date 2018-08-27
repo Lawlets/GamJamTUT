@@ -119,14 +119,15 @@ public class Fighting : MonoBehaviour {
 
     #region LightningBullet
 
-    public void LightningShot()
+    public bool LightningShot()
     {
         if (!m_canShotLightningBullet)
-            return;
+            return false;
         else
             StartLightningCountDown();
 
         EnableLightning(m_lightingBullet);
+        return true;
     }
 
     private void EnableLightning(GameObject lightning)
@@ -138,7 +139,7 @@ public class Fighting : MonoBehaviour {
 
         GameObject obj = Instantiate(lightning, bulletSpawnerPos, Quaternion.identity) as GameObject;
         Lightning ltn = obj.GetComponent<Lightning>();
-        ltn.SetOwner(gameObject.tag);
+        ltn.SetOwner(gameObject.tag, GetComponent<Player>());
     }
 
     private void StartLightningCountDown()
