@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     private BoxCollider2D m_collider;
     private Damageable m_damageable;
     private Fighting m_fighting;
+    private Rigidbody2D m_rigidBody;
 
     [SerializeField]
     private float m_verticalSpeed = 2f;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour {
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_fighting = GetComponent<Fighting>();
+        m_rigidBody = GetComponent<Rigidbody2D>();
 
     }
 	
@@ -34,16 +36,19 @@ public class Player : MonoBehaviour {
         float x_axis = Input.GetAxis("Horizontal");
         float y_axis = Input.GetAxis("Vertical");
 
+        
+
         Vector3 bas_move = transform.position;
         bas_move.x += (x_axis * m_horizontalSpeed) * Time.deltaTime;
         bas_move.y += (y_axis * m_verticalSpeed) * Time.deltaTime;
-        transform.position = bas_move;
+        m_rigidBody.MovePosition(bas_move);
+        //transform.position = bas_move;
     }
 
     private void UpdateButtonInput()
     {
-        if (Input.GetButtonDown("ButtonA"))
-            m_fighting.Shot();
+        if (Input.GetButtonDown("ButtonA") || Input.GetButton("ButtonA"))
+            m_fighting.WaterShot();
         if (Input.GetButtonDown("ButtonB"))
             Shot();
         if (Input.GetButtonDown("ButtonY"))
