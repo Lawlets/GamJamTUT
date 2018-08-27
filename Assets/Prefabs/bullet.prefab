@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b5f3acf8b2448458aa26e08e23b365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletLifeTime: 1.5
+  m_bulletLifeTime: 5
   m_damage: 1
 --- !u!114 &114510349361809602
 MonoBehaviour:

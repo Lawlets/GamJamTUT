@@ -32,7 +32,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1365994883743618
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,13 +150,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bulletSpawnerPos: {fileID: 1365994883743618}
-  m_shootingSpeed: 0
+  m_shootingSpeed: 0.1
   m_Trigger: {fileID: 0}
   HP: 5
   movePattern: 0
   moveSpeed: 0
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
-  shootDelay: 0
+  shootDelay: 1
 --- !u!114 &114457387207942996
 MonoBehaviour:
   m_ObjectHideFlags: 1

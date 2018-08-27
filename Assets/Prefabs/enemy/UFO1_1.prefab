@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4238629152947396
 Transform:
   m_ObjectHideFlags: 1
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -160,12 +160,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96530dfd52fa388439b29ee5a01ee698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletSpawnerPos: {fileID: 0}
-  m_shootingSpeed: 0
+  m_bulletSpawnerPos: {fileID: 1901567692584484}
+  m_shootingSpeed: 0.1
   m_Trigger: {fileID: 1020154921181274}
   HP: 5
   movePattern: 3
-  bullet: {fileID: 1235771298522906, guid: 1d79704820c73584b87a3e30c9167a67, type: 2}
+  bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 1
 --- !u!114 &114872959531350844
 MonoBehaviour:
