@@ -34,7 +34,6 @@ public class Bullet : MonoBehaviour {
 
     protected virtual void DestroyBullet()
     {
-        Debug.Log("DestroyBullet");
         Destroy(gameObject);
     }
 
@@ -46,7 +45,6 @@ public class Bullet : MonoBehaviour {
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("boulou");
             collision.gameObject.GetComponent<Damageable>().TakeDamage(m_damage);
 
             // TODO:
@@ -72,7 +70,6 @@ public class Bullet : MonoBehaviour {
             DestroyBullet();
         }
         
-        Debug.Log("Bullet collide with " + collision.gameObject);
     }
 
 
