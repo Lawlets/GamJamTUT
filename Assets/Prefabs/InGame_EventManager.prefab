@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4026384000720094}
   - component: {fileID: 114015907377791520}
   - component: {fileID: 114083229829026214}
+  - component: {fileID: 114989868676150994}
   m_Layer: 0
   m_Name: InGame_EventManager
   m_TagString: Untagged
@@ -67,3 +68,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114989868676150994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230148865593824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b174f86b7209da4ba905e763a874daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  numberSprite:
+  - {fileID: 21300000, guid: 31c710bfcfedaa24581fda3e61702236, type: 3}
+  - {fileID: 21300000, guid: 374897c0e7a48c64f87cb4f5ec865d71, type: 3}
+  - {fileID: 21300000, guid: 0a899cf00599e9e4882dfe396d9eefe7, type: 3}
