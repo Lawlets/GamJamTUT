@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PowerUpManager : MonoBehaviour {
 
+
+    DelegateManager dm;
+
 	public enum POWERUPLEVEL
     {
         levelOne = 1,
@@ -15,6 +18,7 @@ public class PowerUpManager : MonoBehaviour {
 
     public POWERUPLEVEL[] playerPowerUpLevel = new POWERUPLEVEL[3];
 
+    [SerializeField]
     private int[] currentPowerLevel = new int[3];
 
     private void Start()
@@ -24,9 +28,15 @@ public class PowerUpManager : MonoBehaviour {
             playerPowerUpLevel[i] = POWERUPLEVEL.levelOne;
             currentPowerLevel[i] = 1;
         }
+
+        dm = DelegateManager.dm;
+
+        dm.powerUp_Water_Delegate += powerUpWaterDelegate;
+        dm.powerUp_Snow_Delegate += powerUpSnowDelegate;
+        dm.powerUp_Thunder_Delegate += powerUpThunderDelegate;
     }
 
-
+  
     public int GetPowerUpLevel_Water()
     {
         return currentPowerLevel[0];
@@ -40,5 +50,59 @@ public class PowerUpManager : MonoBehaviour {
     public int GetPowerUpLevel_Thunder()
     {
         return currentPowerLevel[2];
+    }
+
+    void powerUpWaterDelegate()
+    {
+        if (playerPowerUpLevel[0] == POWERUPLEVEL.levelOne)
+        {
+            playerPowerUpLevel[0] = POWERUPLEVEL.levelTwo;
+            currentPowerLevel[0]++;
+        }
+        else if (playerPowerUpLevel[0] == POWERUPLEVEL.levelTwo)
+        {
+            playerPowerUpLevel[0] = POWERUPLEVEL.LevelThree;
+            currentPowerLevel[0]++;
+        }
+        else
+        {
+            playerPowerUpLevel[0] = POWERUPLEVEL.LevelThree;
+        }
+    }
+
+    void powerUpSnowDelegate()
+    {
+        if (playerPowerUpLevel[1] == POWERUPLEVEL.levelOne)
+        {
+            playerPowerUpLevel[1] = POWERUPLEVEL.levelTwo;
+            currentPowerLevel[1]++;
+        }
+        else if (playerPowerUpLevel[1] == POWERUPLEVEL.levelTwo)
+        {
+            playerPowerUpLevel[1] = POWERUPLEVEL.LevelThree;
+            currentPowerLevel[1]++;
+        }
+        else
+        {
+            playerPowerUpLevel[1] = POWERUPLEVEL.LevelThree;
+        }
+    }
+
+    void powerUpThunderDelegate()
+    {
+        if (playerPowerUpLevel[2] == POWERUPLEVEL.levelOne)
+        {
+            playerPowerUpLevel[2] = POWERUPLEVEL.levelTwo;
+            currentPowerLevel[2]++;
+        }
+        else if (playerPowerUpLevel[2] == POWERUPLEVEL.levelTwo)
+        {
+            playerPowerUpLevel[2] = POWERUPLEVEL.LevelThree;
+            currentPowerLevel[2]++;
+        }
+        else
+        {
+            playerPowerUpLevel[2] = POWERUPLEVEL.LevelThree;
+        }
     }
 }

@@ -1337,6 +1337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPowerUpLevel: 000000000000000000000000
+  currentPowerLevel: 000000000000000000000000
 --- !u!1001 &1514020520
 Prefab:
   m_ObjectHideFlags: 0
