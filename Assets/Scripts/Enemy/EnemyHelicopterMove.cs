@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHelicopterMove : MonoBehaviour {
+public class EnemyHelicopterMove : EnemyEntity
+{
 
     [SerializeField]
     private GameObject m_bulletSpawnerPos;
@@ -62,7 +63,8 @@ public class EnemyHelicopterMove : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        EnemyMove(movePattern);
+        if (m_canUpdateMovement)
+            EnemyMove(movePattern);
         //transform.position = pos;
         if (shootFlag == true)
         {

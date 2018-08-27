@@ -54,8 +54,6 @@ public class FreezingBullet : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerStay2D Freeze");
-
         if (collision.gameObject.tag == m_owner)
             return;
 

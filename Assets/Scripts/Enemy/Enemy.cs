@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : EnemyEntity
+{
 
     [SerializeField]
     private GameObject m_bulletSpawnerPos;
@@ -67,7 +68,8 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        EnemyMove(movePattern);
+        if(m_canUpdateMovement)
+            EnemyMove(movePattern);
         //transform.position = pos;
         if(shootFlag == true)
         {

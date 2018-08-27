@@ -35,6 +35,11 @@ public class Freezable : MonoBehaviour {
 
     private void Fall()
     {
+        if(gameObject.tag == "Enemy")
+        {
+            GetComponent<EnemyEntity>().SetMovementUpdateBoolean = false;
+        }
+
         GetComponent<Rigidbody2D>().gravityScale = 1;
     }
 

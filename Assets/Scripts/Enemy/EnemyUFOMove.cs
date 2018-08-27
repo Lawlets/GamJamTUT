@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUFOMove : MonoBehaviour {
+public class EnemyUFOMove : EnemyEntity {
+
+    [SerializeField]
+    private GameObject m_bulletSpawnerPos;
+    [SerializeField]
+    private float m_shootingSpeed;
 
     [SerializeField]
     private GameObject m_Trigger;
@@ -59,8 +64,9 @@ public class EnemyUFOMove : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        EnemyMove(movePattern);
-        transform.position = pos;
+        if (m_canUpdateMovement)
+            EnemyMove(movePattern);
+        //transform.position = pos;
         if (shootFlag == true)
         {
             shootTime += 1 * Time.deltaTime;
@@ -88,7 +94,8 @@ public class EnemyUFOMove : MonoBehaviour {
         {
             case 1:
                 //横に移動
-                pos.x -= moveSpeed / iceSlow;
+                pos.x -= (moveSpeed / iceSlow) * Time.deltaTime;
+                transform.position = pos;
 
                 break;
             case 2:
@@ -108,8 +115,9 @@ public class EnemyUFOMove : MonoBehaviour {
                 }
 
 
-                pos.x += moveX / iceSlow;
-                pos.y += moveY / iceSlow;
+                pos.x += (moveX / iceSlow) * Time.deltaTime;
+                pos.y += (moveY / iceSlow) * Time.deltaTime;
+                transform.position = pos;
                 break;
             case 3:
                 //一定位置で止まる
@@ -124,6 +132,7 @@ public class EnemyUFOMove : MonoBehaviour {
                 else shootFlag = true;
 
                 bulletPattern = 4;
+                transform.position = pos;
                 break;
             default:
                 //
@@ -135,12 +144,21 @@ public class EnemyUFOMove : MonoBehaviour {
     public void EnemyShot(int bulletPattern)
     {
 
+        Vector3 entityPos = transform.position;
+        Vector3 bulletSpawnerPos = m_bulletSpawnerPos.transform.position;
+
+        Vector3 shotDirection = bulletSpawnerPos - entityPos;
+
+        Rigidbody2D rb = null;
+
         switch (bulletPattern)
         {
             case 1:
                 //通常ショット
                 var bulletInstance = GameObject.Instantiate(bullet, pos, transform.rotation) as GameObject;
-                Destroy(bulletInstance, 5f);
+                //Destroy(bulletInstance, 5f);
+                rb = bulletInstance.GetComponent<Rigidbody2D>();
+                rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 break;
             case 2:
                 //3wayショット
@@ -148,7 +166,9 @@ public class EnemyUFOMove : MonoBehaviour {
                 {
                     bulletInstance = GameObject.Instantiate(bullet, pos, transform.rotation) as GameObject;
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 30 * i);
-                    Destroy(bulletInstance, 5f);
+                    //Destroy(bulletInstance, 5f);
+                    rb = bulletInstance.GetComponent<Rigidbody2D>();
+                    rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 }
                 break;
             case 3:
@@ -157,15 +177,19 @@ public class EnemyUFOMove : MonoBehaviour {
                 {
                     bulletInstance = GameObject.Instantiate(bullet, pos, transform.rotation) as GameObject;
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 20 * i);
-                    Destroy(bulletInstance, 5f);
+                    //Destroy(bulletInstance, 5f);
+                    rb = bulletInstance.GetComponent<Rigidbody2D>();
+                    rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 }
                 break;
             case 4:
                 //自機狙い
                 bulletInstance = GameObject.Instantiate(bullet, pos, transform.rotation) as GameObject;
-                EnemyBulletMove bulletObject = bulletInstance.GetComponent<EnemyBulletMove>();
-                bulletObject.pattern = 2;
-                Destroy(bulletInstance, 5f);
+                //EnemyBulletMove bulletObject = bulletInstance.GetComponent<EnemyBulletMove>();
+                //bulletObject.pattern = 2;
+                rb = bulletInstance.GetComponent<Rigidbody2D>();
+                rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
+                //Destroy(bulletInstance, 5f);
                 break;
             default:
                 //
