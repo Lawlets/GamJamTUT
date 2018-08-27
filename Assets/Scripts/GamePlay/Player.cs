@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     private SpriteRenderer m_spriteRenderer;
     private BoxCollider2D m_collider;
     private Damageable m_damageable;
+    private Fighting m_fighting;
 
     [SerializeField]
     private float m_verticalSpeed = 2f;
@@ -19,6 +20,7 @@ public class Player : MonoBehaviour {
         m_collider = GetComponent<BoxCollider2D>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
+        m_fighting = GetComponent<Fighting>();
 
     }
 	
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour {
     private void UpdateButtonInput()
     {
         if (Input.GetButtonDown("ButtonA"))
-            Shot();
+            m_fighting.Shot();
         if (Input.GetButtonDown("ButtonB"))
             Shot();
         if (Input.GetButtonDown("ButtonY"))
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour {
 
     private void Shot()
     {
-        Debug.Log("instanciate projectile");
+        
     }
 
 }
