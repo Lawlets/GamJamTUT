@@ -15,18 +15,16 @@ public class PlayerTakeDamage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            TakeDamage();
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    TakeDamage();
+        //}
 
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    RecoverHealth();
           
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            RecoverHealth();
-          
-        }
+        //}
     }
 
     public void RecoverHealth()

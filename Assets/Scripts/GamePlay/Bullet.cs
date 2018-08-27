@@ -55,6 +55,8 @@ public class Bullet : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<PlayerTakeDamage>().TakeDamage();
+
             // TODO:
             // Deal damage to player
             // play splash animation
