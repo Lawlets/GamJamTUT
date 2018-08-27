@@ -18,46 +18,45 @@ public class Fighting : MonoBehaviour {
     [SerializeField]
     private GameObject m_iceBullet;
 
-    [SerializeField]
-    private float m_shotCountdown = 1f;
+#region WaterBulletValue
 
-    private float m_shotTimer = 0f;
-    private bool m_canShot = true;
-    private bool m_clearCoroutine = false;
+
+    [SerializeField]
+    private float m_shotWaterCountdown = 1f;
+
+    private float m_shotWaterTimer = 0f;
+    private bool m_canShotWaterBullet = true;
+    private bool m_clearWaterCoroutine = false;
 
     private IEnumerator m_waterCountdownCoroutine = null;
+
+    #endregion
+
+    #region LigtningBulletValue
+
+    [SerializeField]
+    private float m_shotLightningCountdown = 2f;
+
+    private float m_shotLightningTimer = 0f;
+    private bool m_canShotLightningBullet = true;
+    private bool m_clearLightningCoroutine = false;
+
     private IEnumerator m_lightingCountdownCoroutine = null;
+
+    #endregion
 
 
     void Start () {
         m_waterCountdownCoroutine = WaterCountdown();
-        
+        m_lightingCountdownCoroutine = LightningCountDown();
 	}
 	
 	void Update () {
-        if (m_clearCoroutine)
+        if (m_clearWaterCoroutine)
             StopWaterCountdown();
+        if (m_clearLightningCoroutine)
+            StopLightningCountDown();
 	}
-
-    public void WaterShot()
-    {
-        if (!m_canShot)
-            return;
-        else
-            StartWaterCountdow();
-
-        InstanciateBullet(m_waterBullet);
-    }
-
-    public void LightningShot()
-    {
-        //if (!m_canShot)
-        //    return;
-        //else
-        //    StartWaterCountdow();
-        //
-        //InstanciateBullet(m_lightingBullet);
-    }
 
     private GameObject InstanciateBullet(GameObject bullet)
     {
@@ -76,31 +75,100 @@ public class Fighting : MonoBehaviour {
         return obj;
     }
 
+    #region WaterBullet
+
+    public void WaterShot()
+    {
+        if (!m_canShotWaterBullet)
+            return;
+        else
+            StartWaterCountdow();
+
+        InstanciateBullet(m_waterBullet);
+    }
+
+
     private void StartWaterCountdow()
     {
-        m_canShot = false;
+        m_canShotWaterBullet = false;
         StartCoroutine(m_waterCountdownCoroutine);
     }
 
     private IEnumerator WaterCountdown()
     {
-        while(m_shotTimer < m_shotCountdown)
+        while(m_shotWaterTimer < m_shotWaterCountdown)
         {
-            m_shotTimer += Time.deltaTime;
+            m_shotWaterTimer += Time.deltaTime;
             yield return null;
         }
 
-        m_clearCoroutine = true;
+        m_clearWaterCoroutine = true;
         yield return null;
     }
 
     private void StopWaterCountdown()
     {
-        m_canShot = true;
-        m_shotTimer = 0f;
-        m_clearCoroutine = false;
+        m_canShotWaterBullet = true;
+        m_shotWaterTimer = 0f;
+        m_clearWaterCoroutine = false;
         StopCoroutine(m_waterCountdownCoroutine);
         m_waterCountdownCoroutine = WaterCountdown();
     }
+
+    #endregion
+
+    #region LightningBullet
+
+    public void LightningShot()
+    {
+        if (!m_canShotLightningBullet)
+            return;
+        else
+            StartLightningCountDown();
+
+        EnableLightning(m_lightingBullet);
+    }
+
+    private void EnableLightning(GameObject lightning)
+    {
+        Vector3 entityPos = transform.position;
+        Vector3 bulletSpawnerPos = m_bulletSpawner.transform.position;
+
+        Vector3 shotDirection = bulletSpawnerPos - entityPos;
+
+        GameObject obj = Instantiate(lightning, bulletSpawnerPos, Quaternion.identity) as GameObject;
+        Lightning ltn = obj.GetComponent<Lightning>();
+        ltn.SetOwner(gameObject.tag);
+    }
+
+    private void StartLightningCountDown()
+    {
+        m_canShotLightningBullet = false;
+        StartCoroutine(m_lightingCountdownCoroutine);
+    }
+
+    private IEnumerator LightningCountDown()
+    {
+        while(m_shotLightningTimer < m_shotLightningCountdown)
+        {
+            m_shotLightningTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        m_clearLightningCoroutine = true;
+        yield return null;
+    }
+
+    private void StopLightningCountDown()
+    {
+        m_clearLightningCoroutine = false;
+        m_shotLightningTimer = 0f;
+        m_canShotLightningBullet = true;
+        StopCoroutine(m_lightingCountdownCoroutine);
+        m_lightingCountdownCoroutine = LightningCountDown();
+    }
+
+    #endregion
+
 }
 

@@ -36,13 +36,10 @@ public class Player : MonoBehaviour {
         float x_axis = Input.GetAxis("Horizontal");
         float y_axis = Input.GetAxis("Vertical");
 
-        
-
         Vector3 bas_move = transform.position;
         bas_move.x += (x_axis * m_horizontalSpeed) * Time.deltaTime;
         bas_move.y += (y_axis * m_verticalSpeed) * Time.deltaTime;
         m_rigidBody.MovePosition(bas_move);
-        //transform.position = bas_move;
     }
 
     private void UpdateButtonInput()
@@ -52,7 +49,7 @@ public class Player : MonoBehaviour {
         if (Input.GetButtonDown("ButtonB"))
             Shot();
         if (Input.GetButtonDown("ButtonY"))
-            Shot();
+            m_fighting.LightningShot();
         if (Input.GetButtonDown("ButtonX"))
             Shot();
     }

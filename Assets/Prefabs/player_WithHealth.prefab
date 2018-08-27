@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bulletSpawner: {fileID: 1071599803634994}
+  m_bulletForce: 0.55
   m_waterBullet: {fileID: 1388662959147760, guid: 93c1b3ab8446e6945b240065f6b0b543,
     type: 2}
   m_lightingBullet: {fileID: 0}

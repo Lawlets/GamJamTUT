@@ -16,12 +16,15 @@ public class Damageable : MonoBehaviour {
 		
 	}
 
-    public bool TakeDamage(float amount)
+    public bool TakeDamage(float amount, bool isLightning = false)
     {
         if (IsDead())
             return false;
 
         m_life -= amount;
+
+        if (isLightning)
+            Die();
 
         if (IsDead())
             Die();
