@@ -50,7 +50,7 @@ public class Lightning : MonoBehaviour {
         if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Bullet")
         {
             Damageable dmg = collision.gameObject.GetComponent<Damageable>();
-            dmg.TakeDamage(m_damage);
+            dmg.TakeDamage(m_damage, true);
         }
 
     }
