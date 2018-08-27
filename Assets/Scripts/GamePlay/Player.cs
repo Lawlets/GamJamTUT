@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
         m_animator.SetBool("is_Shooting", m_isShooting);
         m_animator.SetBool("is_LightningShooting",  m_isLightningShooting);
         m_animator.SetBool("is_Death", m_isDead);
+
     }
 
     private void UpdateMovement()

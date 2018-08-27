@@ -10,18 +10,42 @@ public class FreezingBullet : MonoBehaviour {
     private float m_freezePower = 10f;
 
     private BoxCollider2D m_collider;
+    private Animator m_animator = null;
 
     private string m_owner = "";
 
-	void Start ()
+    private bool m_isStart = false;
+    private bool m_isFinish = false;
+
+
+    void Start ()
     {
         m_collider = GetComponent<BoxCollider2D>();
+        m_animator = GetComponent<Animator>();
 	}
 	
 	void Update ()
     {
 		
 	}
+
+    private void OnEnable()
+    {
+        m_isStart = true;
+        m_isFinish = false;
+    }
+
+    private void OnDisable()
+    {
+        m_isStart = false;
+        m_isFinish = true;
+    }
+
+    private void FixedUpdate()
+    {
+        m_animator.SetBool("is_Start", m_isStart);
+        m_animator.SetBool("is_Finish", m_isFinish);
+    }
 
     public void SetOwner(string tag)
     {

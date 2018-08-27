@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 212730444246501908}
   - component: {fileID: 61081398125696456}
   - component: {fileID: 114423935085194432}
+  - component: {fileID: 95051768837546618}
   m_Layer: 0
   m_Name: FreezingBullet
   m_TagString: Untagged
@@ -177,19 +178,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.99, y: 1.35}
   m_EdgeRadius: 0
---- !u!114 &114423935085194432
-MonoBehaviour:
+--- !u!95 &95051768837546618
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1141156475201224}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6704bf3f3a4f744fa3765a263c682bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_damage: 0
-  m_freezePower: 10
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fcf90d35931a6f24996beeed3780b031, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95766191160134658
 Animator:
   serializedVersion: 3
@@ -208,6 +214,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114423935085194432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141156475201224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6704bf3f3a4f744fa3765a263c682bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_damage: 0
+  m_freezePower: 10
 --- !u!114 &114733576972374284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df17560d62fbc24aa12f44bcdfee4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_hasLightning: 0
   m_verticalSpeed: 2.5
   m_horizontalSpeed: 2.5
 --- !u!114 &114912788179984026
@@ -250,7 +270,7 @@ MonoBehaviour:
     type: 2}
   m_lightingBullet: {fileID: 1947731252406272, guid: e3d34f9e21b4db74a99c8ddb5b200aa6,
     type: 2}
-  m_iceBullet: {fileID: 0}
+  m_iceBullet: {fileID: 1141156475201224}
   m_shotWaterCountdown: 0.1
   m_shotLightningCountdown: 2
 --- !u!212 &212066289938915310
