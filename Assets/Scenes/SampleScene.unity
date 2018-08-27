@@ -250,9 +250,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114912788179984026, guid: 475932352e0792a41b233e8637953076,
+        type: 2}
+      propertyPath: m_iceBullet
+      value: 
+      objectReference: {fileID: 814053850}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 475932352e0792a41b233e8637953076, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &814053850 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1141156475201224, guid: 475932352e0792a41b233e8637953076,
+    type: 2}
+  m_PrefabInternal: {fileID: 628374497}
 --- !u!1001 &1405917188
 Prefab:
   m_ObjectHideFlags: 0
