@@ -46,6 +46,7 @@ public class Bullet : MonoBehaviour {
 
         if (collision.gameObject.tag == "Enemy")
         {
+            Debug.Log("boulou");
             collision.gameObject.GetComponent<Damageable>().TakeDamage(m_damage);
 
             // TODO:

@@ -31,11 +31,13 @@ public class Damageable : MonoBehaviour {
 
     private bool IsDead()
     {
-        return m_life > 0;
+        return m_life < 0;
     }
 
     private void Die()
     {
+        if (gameObject.tag == "Enemy")
+            Destroy(gameObject);
         Debug.Log("Do something because Im Dead");
     }
 
