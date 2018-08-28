@@ -54,7 +54,7 @@ public class EnemyUFOMove : EnemyEntity {
     {
         pos = transform.position;
         startPos = pos;
-        player = GameObject.Find("player").GetComponent<Player>();
+        player = GameObject.Find("player_WithHealth").GetComponent<Player>();
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         centerPos = camera.ViewportToWorldPoint(new Vector2(0.5f, 0.8f));
         underPos = camera.ViewportToWorldPoint(new Vector2(0.0f, 0.0f));
