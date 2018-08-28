@@ -25,11 +25,11 @@ public class Damageable : MonoBehaviour {
 
         if (isLightning)
             if (GetComponent<Animator>() != null)
-                GetComponent<Animator>().SetBool("is_Alive", false);
+                Die();
 
         if (IsDead())
-            if(GetComponent<Animator>() != null)
-                GetComponent<Animator>().SetBool("is_Alive", false);
+            if (GetComponent<Animator>() != null)
+                Die();
 
         return true;
     }
