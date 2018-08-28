@@ -13,6 +13,9 @@ public class Fighting : MonoBehaviour
     private GameObject[] m_bulletSpwner_LV2 = new GameObject[3];
 
     [SerializeField]
+    private GameObject[] m_LightingbulletSpwner_LV2 = new GameObject[3];
+
+    [SerializeField]
     private GameObject[] m_bulletSpwner_LV3 = new GameObject[5];
 
     [SerializeField]
@@ -174,11 +177,24 @@ public class Fighting : MonoBehaviour
         else
             StartLightningCountDown();
 
-        EnableLightning(m_lightingBullet);
+        switch (pm.playerPowerUpLevel[2])
+        {
+            case PowerUpManager.POWERUPLEVEL.levelOne:
+                EnableLightning(m_lightingBullet);
+                break;
+            case PowerUpManager.POWERUPLEVEL.levelTwo:
+                break;
+            case PowerUpManager.POWERUPLEVEL.LevelThree:
+                break;
+            default:
+                break;
+        }
+
+       
         return true;
     }
 
-    private void EnableLightning(GameObject lightning)
+    private void EnableLightning(GameObject lightning )
     {
         Vector3 entityPos = transform.position;
         Vector3 bulletSpawnerPos = m_bulletSpawner.transform.position;
@@ -186,6 +202,18 @@ public class Fighting : MonoBehaviour
         Vector3 shotDirection = bulletSpawnerPos - entityPos;
 
         GameObject obj = Instantiate(lightning, bulletSpawnerPos, Quaternion.identity) as GameObject;
+        Lightning ltn = obj.GetComponent<Lightning>();
+        ltn.SetOwner(gameObject.tag, GetComponent<Player>());
+    }
+
+    private void EnableLightning(GameObject lightning, Transform Spawne)
+    {
+        Vector3 entityPos = transform.position;
+        Vector3 bulletSpawnerPos = Spawne.transform.position;
+
+        Vector3 shotDirection = bulletSpawnerPos - entityPos;
+
+        GameObject obj = Instantiate(lightning, Spawne.position, Quaternion.identity) as GameObject;
         Lightning ltn = obj.GetComponent<Lightning>();
         ltn.SetOwner(gameObject.tag, GetComponent<Player>());
     }
