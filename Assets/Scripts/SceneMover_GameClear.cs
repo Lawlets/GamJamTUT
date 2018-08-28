@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneMover_GameClear : MonoBehaviour
 {
-    private void Update()
+    public void ReturnToTitleCaller()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuiteGameCaller()
+    {
+        Application.Quit();
     }
 }

@@ -5,12 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class SceneMover_MainGame : MonoBehaviour {
 
-	
-	
-	// Update is called once per frame
-	void Update ()
+    PlayerTakeDamage player;
+    bool startMoving = false;
+
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        player = GameObject.FindObjectOfType<PlayerTakeDamage>();
+    }
+
+    void Update ()
+    {
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    SceneManager.LoadScene(2);
+        //}
+
+        if (player.IsDead())
         {
             SceneManager.LoadScene(2);
         }
