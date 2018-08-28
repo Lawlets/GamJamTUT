@@ -13,10 +13,10 @@ public class Fighting : MonoBehaviour
     private GameObject[] m_bulletSpwner_LV2 = new GameObject[3];
 
     [SerializeField]
-    private GameObject[] m_LightingbulletSpwner_LV2 = new GameObject[3];
+    private GameObject[] m_bulletSpwner_LV3 = new GameObject[5];
 
     [SerializeField]
-    private GameObject[] m_bulletSpwner_LV3 = new GameObject[5];
+    private GameObject[] m_LightingSpwner_LV3 = new GameObject[8];
 
     [SerializeField]
     private float m_bulletForce = 0.55f;
@@ -25,6 +25,10 @@ public class Fighting : MonoBehaviour
     private GameObject m_waterBullet;
     [SerializeField]
     private GameObject m_lightingBullet;
+
+    [SerializeField]
+    private GameObject m_lightingBulletLV2;
+
     [SerializeField]
     private GameObject m_iceBullet;
 
@@ -183,6 +187,9 @@ public class Fighting : MonoBehaviour
                 EnableLightning(m_lightingBullet);
                 break;
             case PowerUpManager.POWERUPLEVEL.levelTwo:
+                EnableLightning(m_lightingBulletLV2, m_bulletSpwner_LV2[0].transform);
+                EnableLightning(m_lightingBulletLV2, m_bulletSpwner_LV2[1].transform);
+                EnableLightning(m_lightingBulletLV2, m_bulletSpwner_LV2[2].transform);
                 break;
             case PowerUpManager.POWERUPLEVEL.LevelThree:
                 break;
