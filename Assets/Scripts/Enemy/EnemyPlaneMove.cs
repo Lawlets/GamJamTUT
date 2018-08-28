@@ -119,8 +119,8 @@ public class EnemyPlaneMove : EnemyEntity
                 }
 
 
-                pos.x += (moveX / iceSlow) * Time.deltaTime;
-                pos.y += (moveY / iceSlow) * Time.deltaTime;
+                pos.x += (moveX / iceSlow) * Time.deltaTime * moveSpeed;
+                pos.y += (moveY / iceSlow) * Time.deltaTime * moveSpeed;
                 transform.position = pos;
                 break;
             case 3:

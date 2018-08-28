@@ -213,6 +213,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1461788 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114503615048545232, guid: 3ebc3498b4ea29c439b87c1e9edfa9e7,
+    type: 2}
+  m_PrefabInternal: {fileID: 839417764}
+  m_Script: {fileID: 11500000, guid: 925f68146bed3334eaaa4fcd8043f31c, type: 3}
 --- !u!1 &21735984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1106,78 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 407914903}
+--- !u!1 &486298587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1154556462323392, guid: 7ca8b63f484e1094db83a9483df2b4fa,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 486298588}
+  - component: {fileID: 486298590}
+  - component: {fileID: 486298589}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &486298588
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224212311815744766, guid: 7ca8b63f484e1094db83a9483df2b4fa,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486298587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 507195209}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.34375864, y: 0}
+  m_AnchorMax: {x: 0.656, y: 0.6391111}
+  m_AnchoredPosition: {x: -13.424988, y: 1.0750122}
+  m_SizeDelta: {x: 26.85, y: 2.15}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &486298589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114212624665719920, guid: 7ca8b63f484e1094db83a9483df2b4fa,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486298587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 188ed4b819c62c54e92f39700f402d4f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &486298590
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222019617327266048, guid: 7ca8b63f484e1094db83a9483df2b4fa,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 486298587}
 --- !u!1 &507195208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1207,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 486298588}
   - {fileID: 1177536678}
   - {fileID: 2026922965}
   m_Father: {fileID: 328067353}
@@ -1158,6 +1237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae366ebf5e261714d9025c735d2bdb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseUI: {fileID: 507195208}
+  pg: {fileID: 1461788}
+  BGM: {fileID: 1461787}
 --- !u!1001 &543283775
 Prefab:
   m_ObjectHideFlags: 0
@@ -1362,6 +1444,10 @@ Prefab:
     - target: {fileID: 4122581355121672, guid: e84456934b684c049bc502594586d186, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247345378902406, guid: e84456934b684c049bc502594586d186, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e84456934b684c049bc502594586d186, type: 2}
@@ -1737,7 +1823,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 43b3af6eb654ad544bbd5293cd5b185a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af0e0cd28d4d7e5479acae4b386a7668, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2126,7 +2212,7 @@ RectTransform:
   m_Children:
   - {fileID: 1382218401}
   m_Father: {fileID: 507195209}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.34375864, y: 0}
   m_AnchorMax: {x: 0.64658624, y: 1}
@@ -3163,7 +3249,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 94e2a9cfc2b5ebe46a97988224618e5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8db9f1373ba82004690ee9b0313cbf42, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3411,8 +3497,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ResumeGameCaller
+      - m_Target: {fileID: 507195211}
+        m_MethodName: OnResumeButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3444,7 +3530,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8f0ef82d4e3508a4ea6399a0d4c95899, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a310c0cae5886144a52121d9530fd97, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3666,7 +3752,7 @@ RectTransform:
   - {fileID: 1649840889}
   - {fileID: 407914904}
   m_Father: {fileID: 507195209}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.34375864, y: 0.058823526}
   m_AnchorMax: {x: 0.64658624, y: 0.60200006}
