@@ -45,8 +45,11 @@ public class Bullet : MonoBehaviour {
 
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Damageable>().TakeDamage(m_damage);
-            GetComponent<Animator>().SetBool("collide", true);
+            if (collision.gameObject.GetComponent<Damageable>())
+            {
+                collision.gameObject.GetComponent<Damageable>().TakeDamage(m_damage);
+                GetComponent<Animator>().SetBool("collide", true);
+            }
 
             // TODO:
             // play splash animation
