@@ -8,23 +8,44 @@ public class PlayerTakeDamage : MonoBehaviour
     [Range(0, 3)]
     int PlayerHealth;
 
+    [SerializeField]
+    float timeToTurnInvincibilityOff = 2;
+
+    SpriteRenderer playerSprite;
+
+    [SerializeField]
+    float timeBetweenFlasing = 0.5f;
+    float currentFlastingTime = 0;
+    float totalTimeOfInvincibility = 0;
+
+    [SerializeField]
+    bool StartInvincibility = false;
+
     private void Start()
-    { 
+    {
+        playerSprite = GetComponent<SpriteRenderer>();
       PlayerHealth = 3;
     }
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    TakeDamage();
-        //}
-
-        //if (Input.GetKeyDown(KeyCode.X))
-        //{
-        //    RecoverHealth();
-          
-        //}
+        if (StartInvincibility)
+        {
+            currentFlastingTime += Time.deltaTime;
+            if (currentFlastingTime >= timeBetweenFlasing)
+            {
+                totalTimeOfInvincibility += currentFlastingTime;
+                currentFlastingTime = 0;
+                playerSprite.enabled = !playerSprite.enabled;
+            }
+            if (totalTimeOfInvincibility >= timeToTurnInvincibilityOff)
+            {
+                StartInvincibility = false;
+                totalTimeOfInvincibility = 0;
+                currentFlastingTime = 0;
+                playerSprite.enabled = true;
+            }
+        }
     }
 
     public void RecoverHealth()
@@ -39,13 +60,18 @@ public class PlayerTakeDamage : MonoBehaviour
 
     public void TakeDamage()
     {
-        DelegateManager.dm.playerTakeDamage_delegate(PlayerHealth);
-        PlayerHealth--;
-
-        if (PlayerHealth < 0)
+        if (StartInvincibility == false)
         {
-            PlayerHealth = 0;
+            StartInvincibility = true;
+            DelegateManager.dm.playerTakeDamage_delegate(PlayerHealth);
+            PlayerHealth--;
+
+            if (PlayerHealth < 0)
+            {
+                PlayerHealth = 0;
+            }
         }
+       
     }
 
     public int GetCurrentHealth()
@@ -55,6 +81,7 @@ public class PlayerTakeDamage : MonoBehaviour
 
     public bool IsDead()
     {
+        
         return (PlayerHealth <= 0);
     }
 }

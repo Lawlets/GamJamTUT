@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114015907377791520}
   - component: {fileID: 114083229829026214}
   - component: {fileID: 114989868676150994}
+  - component: {fileID: 114503615048545232}
   m_Layer: 0
   m_Name: InGame_EventManager
   m_TagString: Untagged
@@ -68,6 +69,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &114503615048545232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230148865593824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925f68146bed3334eaaa4fcd8043f31c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseUI: {fileID: 0}
+  gamePauseState: 0
 --- !u!114 &114989868676150994
 MonoBehaviour:
   m_ObjectHideFlags: 1
