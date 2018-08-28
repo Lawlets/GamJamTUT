@@ -31,12 +31,12 @@ public class EnemyUFOMove : EnemyEntity {
     //発射間隔(firing interval)
     private float shootDelay = 1.0f;
 
-    private Vector2 pos;
+    //private Vector2 pos;
     private int moveTime = 200;
     private bool shootFlag = true;
 
     //初期位置
-    private Vector2 startPos;
+    //private Vector2 startPos;
     private int stopCount = 0;
     private float shootTime = 0;
     //パターン2で使用
@@ -89,6 +89,8 @@ public class EnemyUFOMove : EnemyEntity {
         //else iceSlow = 1.0f;
     }
 
+   
+
     public void EnemyMove(int movePattern)
     {
         switch (movePattern)
@@ -116,8 +118,8 @@ public class EnemyUFOMove : EnemyEntity {
                 }
 
 
-                pos.x += (moveX / iceSlow) * Time.deltaTime;
-                pos.y += (moveY / iceSlow) * Time.deltaTime;
+                pos.x += (moveX / iceSlow) * Time.deltaTime * moveSpeed;
+                pos.y += (moveY / iceSlow) * Time.deltaTime * moveSpeed;
                 transform.position = pos;
                 break;
             case 3:

@@ -28,12 +28,12 @@ public class EnemyHelicopterMove : EnemyEntity
     private float shootDelay = 1.0f;
 
 
-    private Vector2 pos;
+    //private Vector2 pos;
     private int moveTime = 200;
     private bool shootFlag = true;
 
     //初期位置
-    private Vector2 startPos;
+    //private Vector2 startPos;
     private int stopCount = 0;
     private float shootTime = 0;
     //パターン2で使用
@@ -94,18 +94,19 @@ public class EnemyHelicopterMove : EnemyEntity
         {
             case 1:
                 //横に移動
-                pos.x -= (moveSpeed / iceSlow) * Time.deltaTime;
+                pos.x -= (moveSpeed / iceSlow) * Time.deltaTime ;
                 transform.position = pos;
                 break;
             case 2:
                 //プレイヤーのy座標に合わせる
-                pos.y += ((player.transform.position.y - pos.y) / 20) / iceSlow;
+                pos.x -= (moveSpeed / iceSlow) * Time.deltaTime;
+                pos.y += ((player.transform.position.y - pos.y) / 20) / iceSlow  * moveSpeed;
                 transform.position = pos;
                 break;
             case 3:
                 //プレイヤーに突進
-                pos.x += ((targetPos.x - startPos.x) / moveTime) / iceSlow;
-                pos.y += ((targetPos.y - startPos.y) / moveTime) / iceSlow;
+                pos.x += ((targetPos.x - startPos.x) / moveTime * moveSpeed * Time.deltaTime) / iceSlow;
+                pos.y += ((targetPos.y - startPos.y) / moveTime * moveSpeed * Time.deltaTime) / iceSlow;
                 bulletPattern = 5;
                 transform.position = pos;
                 break;

@@ -329,7 +329,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1557655122627872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14888167, y: 0.26124525, z: -0.65722656}
+  m_LocalPosition: {x: -0.261, y: 0.161, z: -0.65722656}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4822157910885262}
@@ -412,7 +412,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1279095858883882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.025281787, y: -0.23877253, z: -0.65722656}
+  m_LocalPosition: {x: 0.025281787, y: -0.292, z: -0.65722656}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4163407572571096}
@@ -427,7 +427,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1388079428634032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.34551775, y: -0.42979056, z: -0.65722656}
+  m_LocalPosition: {x: -0.546, y: -0.566, z: -0.65722656}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4769336067019392}
@@ -810,7 +810,7 @@ MonoBehaviour:
   m_Trigger: {fileID: 1189729310452180}
   HP: 5
   movePattern: 2
-  moveSpeed: 0.175
+  moveSpeed: 30
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 2
 --- !u!114 &114178201531910842
@@ -896,7 +896,7 @@ MonoBehaviour:
   m_Trigger: {fileID: 1588058438103278}
   HP: 5
   movePattern: 2
-  moveSpeed: 0.175
+  moveSpeed: 30
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 2
 --- !u!114 &114870826418200336
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_Trigger: {fileID: 1436711704179368}
   HP: 5
   movePattern: 2
-  moveSpeed: 0.175
+  moveSpeed: 30
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 2
 --- !u!114 &114996648382500288
