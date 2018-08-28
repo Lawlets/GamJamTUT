@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class paugeGame : MonoBehaviour
 {
-    [SerializeField]
     GameObject pauseUI;
+
+    AudioSource audioSource;
+    AudioSource BGM;
 
     public enum PAUSESTATE
     {
@@ -25,6 +27,9 @@ public class paugeGame : MonoBehaviour
         pauseUI.SetActive(false);
         gamePauseState = PAUSESTATE.GAME_IS_RUNNING;
 
+        audioSource = GetComponent<AudioSource>();
+        BGM = GameObject.Find("GameBGM").GetComponent<AudioSource>();
+
     }
 	
 	// Update is called once per frame
@@ -37,6 +42,18 @@ public class paugeGame : MonoBehaviour
                 Time.timeScale = 0;
                 pauseUI.SetActive(true);
                 gamePauseState = PAUSESTATE.GAME_IS_PAUSED;
+
+                if (BGM.clip != null)
+                {
+                    BGM.Pause();
+                }
+
+                if (audioSource.clip != null)
+                {
+                    audioSource.Play();
+                }
+
+
             }
         }
 
@@ -48,6 +65,11 @@ public class paugeGame : MonoBehaviour
                 Time.timeScale = 1;
                 pauseUI.SetActive(false);
                 gamePauseState = PAUSESTATE.GAME_IS_RUNNING;
+
+                if (BGM.clip != null)
+                {
+                    BGM.Play();
+                }
             }
         }
 

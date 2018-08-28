@@ -6,12 +6,21 @@ using UnityEngine.SceneManagement;
 public class SceneMover_MainGame : MonoBehaviour {
 
     PlayerTakeDamage player;
-    bool startMoving = false;
+    bool Isdying = false;
+    bool PlayDeathSE = true;
+
+
+    AudioSource playerDeath;
+    AudioSource BGM;
 
 
     private void Start()
     {
+        PlayDeathSE = true;
+        Isdying = false;
         player = GameObject.FindObjectOfType<PlayerTakeDamage>();
+        playerDeath = GameObject.Find("playerDeath").GetComponent<AudioSource>();
+        BGM = GameObject.Find("GameBGM").GetComponent<AudioSource>();
     }
 
     void Update ()
@@ -21,7 +30,15 @@ public class SceneMover_MainGame : MonoBehaviour {
         //    SceneManager.LoadScene(2);
         //}
 
-        if (player.IsDead())
+        if (player.IsDead() && PlayDeathSE)
+        {
+            BGM.Stop();
+            PlayDeathSE = false;
+            Isdying = true;
+            playerDeath.Play();
+        }
+
+        if (Isdying == true && !playerDeath.isPlaying)
         {
             SceneManager.LoadScene(2);
         }

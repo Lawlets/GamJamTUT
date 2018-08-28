@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    private PlayerTakeDamage playerDamage;
+    float currentlerpTime;
+    float maxLearpTime = 2;
+
+    Vector3 currentScale;
+
     private SpriteRenderer m_spriteRenderer;
     private BoxCollider2D m_collider;
     private Damageable m_damageable;
@@ -31,11 +37,27 @@ public class Player : MonoBehaviour {
         m_fighting = GetComponent<Fighting>();
         m_rigidBody = GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
+
+        playerDamage = GetComponent<PlayerTakeDamage>();
+        currentScale = transform.localScale;
     }
 	
 	void Update () {
-        UpdateMovement();
-        UpdateButtonInput();
+        if (!playerDamage.IsDead())
+        {
+            UpdateMovement();
+            UpdateButtonInput();
+        }
+        else
+        {
+            currentlerpTime += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(currentScale, Vector3.zero, currentlerpTime / maxLearpTime);
+            if (currentlerpTime/maxLearpTime >= 1)
+            {
+                currentlerpTime = maxLearpTime;
+            }
+        }
+        
 	}
 
     private void FixedUpdate()
