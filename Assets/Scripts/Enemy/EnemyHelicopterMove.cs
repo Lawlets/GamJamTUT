@@ -28,12 +28,12 @@ public class EnemyHelicopterMove : EnemyEntity
     private float shootDelay = 1.0f;
 
 
-    private Vector2 pos;
+    //private Vector2 pos;
     private int moveTime = 200;
     private bool shootFlag = true;
 
     //初期位置
-    private Vector2 startPos;
+    //private Vector2 startPos;
     private int stopCount = 0;
     private float shootTime = 0;
     //パターン2で使用

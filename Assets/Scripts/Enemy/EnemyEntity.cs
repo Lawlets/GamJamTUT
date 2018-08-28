@@ -8,7 +8,11 @@ public class EnemyEntity : MonoBehaviour {
 
     public bool SetMovementUpdateBoolean  { get { return m_canUpdateMovement; } set { m_canUpdateMovement = value; } }
 
-	void Start () {
+    protected Vector2 pos;
+    protected Vector2 startPos;
+
+
+    void Start () {
 		
 	}
 	
@@ -16,5 +20,9 @@ public class EnemyEntity : MonoBehaviour {
 		
 	}
 
+    public void ResetPosition()
+    {
+        pos = startPos;
+    }
 
 }
