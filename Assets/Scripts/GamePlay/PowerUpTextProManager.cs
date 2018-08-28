@@ -30,7 +30,7 @@ public class PowerUpTextProManager : MonoBehaviour
         {
             //PowerUpObjects[i] = GameObject.Find("PowerUpHolder").transform.GetChild(i).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 
-            imageObject[i] = GameObject.Find("PowerUpHolder").transform.GetChild(i).transform.GetChild(2).GetComponent<Image>();
+            imageObject[i] = GameObject.Find("PowerUpHolder").transform.GetChild(i).transform.GetChild(1).GetComponent<Image>();
         }
 
         dm.powerUp_Water_Delegate += updateTheWaterText;
@@ -40,20 +40,20 @@ public class PowerUpTextProManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            dm.powerUp_Water_Delegate();
-        }
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    dm.powerUp_Water_Delegate();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            dm.powerUp_Snow_Delegate();
-        }
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    dm.powerUp_Snow_Delegate();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            dm.powerUp_Thunder_Delegate();
-        }
+        //if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    dm.powerUp_Thunder_Delegate();
+        //}
     }
 
     void updateTheWaterText()

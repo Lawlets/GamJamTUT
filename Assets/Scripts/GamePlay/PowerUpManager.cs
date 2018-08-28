@@ -54,6 +54,7 @@ public class PowerUpManager : MonoBehaviour {
 
     void powerUpWaterDelegate()
     {
+
         if (playerPowerUpLevel[0] == POWERUPLEVEL.levelOne)
         {
             playerPowerUpLevel[0] = POWERUPLEVEL.levelTwo;
@@ -68,6 +69,7 @@ public class PowerUpManager : MonoBehaviour {
         {
             playerPowerUpLevel[0] = POWERUPLEVEL.LevelThree;
         }
+
     }
 
     void powerUpSnowDelegate()
@@ -103,6 +105,36 @@ public class PowerUpManager : MonoBehaviour {
         else
         {
             playerPowerUpLevel[2] = POWERUPLEVEL.LevelThree;
+        }
+    }
+
+   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+        if (collision.gameObject.GetComponent<PowerUp_Item>())
+        {
+            PowerUp_Item powerUp = collision.gameObject.GetComponent<PowerUp_Item>();
+
+            switch (powerUp.powerUp_Type)
+            {
+                case PowerUp_Item.POWERUPTYPE.WATERDROP:
+                    dm.powerUp_Water_Delegate();
+                    Destroy(collision.gameObject);
+                    break;
+                case PowerUp_Item.POWERUPTYPE.SNOW:
+                    dm.powerUp_Snow_Delegate();
+                    Destroy(collision.gameObject);
+                    break;
+                case PowerUp_Item.POWERUPTYPE.THUNDER:
+                    dm.powerUp_Thunder_Delegate();
+                    Destroy(collision.gameObject);
+                    break;
+                default:
+                    break;
+            }
+
+            
         }
     }
 }

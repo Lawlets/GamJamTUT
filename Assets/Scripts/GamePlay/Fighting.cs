@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighting : MonoBehaviour {
+public class Fighting : MonoBehaviour
+{
 
-
+    PowerUpManager pm;
     [SerializeField]
     private GameObject m_bulletSpawner;
+
+    [SerializeField]
+    private GameObject[] m_bulletSpwner_LV2 = new GameObject[3];
+
+    [SerializeField]
+    private GameObject[] m_bulletSpwner_LV3 = new GameObject[5];
 
     [SerializeField]
     private float m_bulletForce = 0.55f;
@@ -18,7 +25,7 @@ public class Fighting : MonoBehaviour {
     [SerializeField]
     private GameObject m_iceBullet;
 
-#region WaterBulletValue
+    #region WaterBulletValue
 
 
     [SerializeField]
@@ -46,17 +53,20 @@ public class Fighting : MonoBehaviour {
     #endregion
 
 
-    void Start () {
+    void Start()
+    {
+        pm = GetComponent<PowerUpManager>();
         m_waterCountdownCoroutine = WaterCountdown();
         m_lightingCountdownCoroutine = LightningCountDown();
-	}
-	
-	void Update () {
+    }
+
+    void Update()
+    {
         if (m_clearWaterCoroutine)
             StopWaterCountdown();
         if (m_clearLightningCoroutine)
             StopLightningCountDown();
-	}
+    }
 
     private GameObject InstanciateBullet(GameObject bullet)
     {
@@ -66,6 +76,23 @@ public class Fighting : MonoBehaviour {
         Vector3 shotDirection = bulletSpawnerPos - entityPos;
 
         GameObject obj = Instantiate(bullet, bulletSpawnerPos, Quaternion.identity) as GameObject;
+        obj.GetComponent<Bullet>().SetOwner(gameObject.tag);
+
+
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+        rb.AddForce(shotDirection.normalized * m_bulletForce, ForceMode2D.Impulse);
+     
+        return obj;
+    }
+
+    private GameObject InstanciateBullet(GameObject bullet, Transform Spawne)
+    {
+        Vector3 entityPos = transform.position;
+        Vector3 bulletSpawnerPos = Spawne.transform.position;
+
+        Vector3 shotDirection = bulletSpawnerPos - entityPos;
+
+        GameObject obj = Instantiate(bullet, Spawne.position, Quaternion.identity) as GameObject;
         obj.GetComponent<Bullet>().SetOwner(gameObject.tag);
 
 
@@ -84,7 +111,28 @@ public class Fighting : MonoBehaviour {
         else
             StartWaterCountdow();
 
-        InstanciateBullet(m_waterBullet);
+      
+
+        switch (pm.playerPowerUpLevel[0])
+        {
+            case PowerUpManager.POWERUPLEVEL.levelOne:
+                InstanciateBullet(m_waterBullet);
+                break;
+            case PowerUpManager.POWERUPLEVEL.levelTwo:
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV2[0].transform);
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV2[1].transform);
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV2[2].transform);
+                break;
+            case PowerUpManager.POWERUPLEVEL.LevelThree:
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV3[0].transform);
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV3[1].transform);
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV3[2].transform);
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV3[3].transform);
+                InstanciateBullet(m_waterBullet, m_bulletSpwner_LV3[4].transform);
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -96,7 +144,7 @@ public class Fighting : MonoBehaviour {
 
     private IEnumerator WaterCountdown()
     {
-        while(m_shotWaterTimer < m_shotWaterCountdown)
+        while (m_shotWaterTimer < m_shotWaterCountdown)
         {
             m_shotWaterTimer += Time.deltaTime;
             yield return null;
@@ -150,7 +198,7 @@ public class Fighting : MonoBehaviour {
 
     private IEnumerator LightningCountDown()
     {
-        while(m_shotLightningTimer < m_shotLightningCountdown)
+        while (m_shotLightningTimer < m_shotLightningCountdown)
         {
             m_shotLightningTimer += Time.deltaTime;
             yield return null;
