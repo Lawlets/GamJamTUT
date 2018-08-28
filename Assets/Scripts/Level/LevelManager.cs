@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 
@@ -92,6 +93,7 @@ public class LevelManager : MonoBehaviour {
             m_listEmpty = true;
             //TODO:
             // Show victory screen
+            SceneManager.LoadScene("YouWinScene");
         }
         else
         {

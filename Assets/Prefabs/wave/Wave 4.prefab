@@ -810,7 +810,7 @@ MonoBehaviour:
   m_shootingSpeed: 0.1
   HP: 7
   movePattern: 2
-  moveSpeed: 0.2
+  moveSpeed: 0.3
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 3
 --- !u!114 &114582371586483438
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_shootingSpeed: 0.1
   HP: 7
   movePattern: 3
-  moveSpeed: 0.05
+  moveSpeed: 30
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 3
 --- !u!114 &114879039329447302

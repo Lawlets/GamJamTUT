@@ -735,7 +735,7 @@ MonoBehaviour:
   movePattern: 4
   moveSpeed: 0.6
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
-  shootDelay: 1000
+  shootDelay: 5
 --- !u!114 &114424848635365948
 MonoBehaviour:
   m_ObjectHideFlags: 1

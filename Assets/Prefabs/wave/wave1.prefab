@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Trigger: {fileID: 1443845969260918}
   HP: 5
   movePattern: 1
-  moveSpeed: 0.05
+  moveSpeed: 0.1
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 20000
 --- !u!114 &114821217695270762
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Trigger: {fileID: 1050348756951478}
   HP: 5
   movePattern: 1
-  moveSpeed: 0.05
+  moveSpeed: 0.1
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 20000
 --- !u!114 &114993294097353844
