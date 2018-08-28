@@ -21,6 +21,7 @@ public class EnemyPlaneMove : EnemyEntity
     [SerializeField]
     private int movePattern;
     //移動速度(moving Speed)
+    [SerializeField]
     private float moveSpeed = 0.05f;
     //弾の種類(Types of bullets)
     private int bulletPattern = 1;
