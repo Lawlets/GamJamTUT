@@ -11,6 +11,7 @@ public class BasicBullet : Bullet {
 	protected override void Update () {
         base.Update();
 	}
+  
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {

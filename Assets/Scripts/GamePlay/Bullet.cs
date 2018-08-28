@@ -46,12 +46,12 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<Damageable>().TakeDamage(m_damage);
+            GetComponent<Animator>().SetBool("collide", true);
 
             // TODO:
             // play splash animation
             // wait the end of animation before destroying the bullet
-
-            DestroyBullet();
+            
         }
         else if (collision.gameObject.tag == "Player")
         {

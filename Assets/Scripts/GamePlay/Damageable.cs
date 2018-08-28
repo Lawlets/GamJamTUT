@@ -24,10 +24,10 @@ public class Damageable : MonoBehaviour {
         m_life -= amount;
 
         if (isLightning)
-            Die();
+            GetComponent<Animator>().SetBool("is_Alive", false);
 
         if (IsDead())
-            Die();
+            GetComponent<Animator>().SetBool("is_Alive", false);
 
         return true;
     }

@@ -28,9 +28,15 @@ public class Freezable : MonoBehaviour {
             return;
 
         m_currentFreezingValue += freezingAmount;
+        GetComponent<Animator>().SetBool("is_Alive", true);
+        GetComponent<Animator>().SetBool("Start", true);
 
         if (IsFreezing())
-            Fall();
+        {
+            GetComponent<Animator>().SetBool("is_Alive", false);
+            GetComponent<Animator>().SetBool("Start", false);
+        }
+            
     }
 
     private void Fall()
