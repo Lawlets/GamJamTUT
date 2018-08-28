@@ -9,7 +9,7 @@ public class SceneMover_Title : MonoBehaviour
 
     public void StartButtonCaller()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void ExitButtonCaller()

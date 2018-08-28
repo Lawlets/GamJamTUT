@@ -51,5 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78995a477877f004196b04b65b7cdb78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_wavesList: []
+  m_wavesList:
+  - {fileID: 1794199890650486, guid: ffb28d3dbe700474188a27f9ef86ad3c, type: 2}
+  - {fileID: 1872923791458826, guid: fb0092cb7e9ac7b41b3b7fd1f65e5212, type: 2}
+  - {fileID: 1577108572218796, guid: 083263da847e6b743b2749be4255adb7, type: 2}
+  - {fileID: 1459707539798156, guid: 24a8db62db6fe274981b60d11517fdc7, type: 2}
+  - {fileID: 1465558752747032, guid: e0b38bcf418c59849962647235c5dbeb, type: 2}
+  - {fileID: 1312997385094956, guid: 54c91e70cd2a11b4393f1506f11db4e5, type: 2}
+  - {fileID: 1529045825391108, guid: ae8408f1820438747bb34d61eb5897c6, type: 2}
+  - {fileID: 1160479752809354, guid: 70f097d88175d034882a41190539df41, type: 2}
   m_timerForWaveCheck: 5
