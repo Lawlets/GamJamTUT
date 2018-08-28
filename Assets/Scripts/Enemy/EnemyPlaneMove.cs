@@ -166,6 +166,7 @@ public class EnemyPlaneMove : EnemyEntity
             case 1:
                 //通常ショット
                 var bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
+                bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                 rb = bulletInstance.GetComponent<Rigidbody2D>();
                 rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 //Destroy(bulletInstance, 5f);
@@ -176,6 +177,7 @@ public class EnemyPlaneMove : EnemyEntity
                 {
                     bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 30 * i);
+                    bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                     rb = bulletInstance.GetComponent<Rigidbody2D>();
                     rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                     //Destroy(bulletInstance, 5f);
@@ -187,6 +189,7 @@ public class EnemyPlaneMove : EnemyEntity
                 {
                     bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
                     bulletInstance.transform.Rotate(0.0f, 0.0f, 20 * i);
+                    bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                     rb = bulletInstance.GetComponent<Rigidbody2D>();
                     rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                     //Destroy(bulletInstance, 5f);
@@ -195,8 +198,9 @@ public class EnemyPlaneMove : EnemyEntity
             case 4:
                 //自機狙い
                 bulletInstance = GameObject.Instantiate(bullet, bulletSpawnerPos, transform.rotation) as GameObject;
-                EnemyBulletMove bulletObject = bulletInstance.GetComponent<EnemyBulletMove>();
-                bulletObject.pattern = 2;
+                //EnemyBulletMove bulletObject = bulletInstance.GetComponent<EnemyBulletMove>();
+                //bulletObject.pattern = 2;
+                bulletInstance.GetComponent<Bullet>().SetOwner(gameObject.tag);
                 rb = bulletInstance.GetComponent<Rigidbody2D>();
                 rb.AddForce(shotDirection.normalized * m_shootingSpeed, ForceMode2D.Impulse);
                 //Destroy(bulletInstance, 5f);

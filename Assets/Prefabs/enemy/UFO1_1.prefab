@@ -53,7 +53,6 @@ GameObject:
   - component: {fileID: 212329921475435048}
   - component: {fileID: 50488547762866710}
   - component: {fileID: 114432197536411796}
-  - component: {fileID: 114872959531350844}
   - component: {fileID: 114946380016882046}
   - component: {fileID: 61980185067358020}
   - component: {fileID: 95706029211080664}
@@ -186,18 +185,6 @@ MonoBehaviour:
   movePattern: 1
   bullet: {fileID: 1375699181698422, guid: 7a88de1112678e548b5e50ff511dfac9, type: 2}
   shootDelay: 1
---- !u!114 &114872959531350844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1943438147636820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0611fd500734e1d4e869fca960b1e4ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_freezeResistance: 100
 --- !u!114 &114946380016882046
 MonoBehaviour:
   m_ObjectHideFlags: 1

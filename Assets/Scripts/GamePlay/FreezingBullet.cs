@@ -59,8 +59,11 @@ public class FreezingBullet : MonoBehaviour {
 
         if(collision.gameObject.tag == "Enemy")
         {
-            Freezable freezable = collision.gameObject.GetComponent<Freezable>();
-            freezable.Freeze(m_freezePower);
+            if (collision.gameObject.GetComponent<Freezable>())
+            {
+                Freezable freezable = collision.gameObject.GetComponent<Freezable>();
+                freezable.Freeze(m_freezePower);
+            }
         }
     }
 
